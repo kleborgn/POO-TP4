@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 
 /**
  * ListeRectangles
@@ -8,6 +8,7 @@ public class ListeRectangles {
 
     private static final int MAX = 10;
     private ArrayList<Rectangle> listeR;
+    private Rectangle tabR[];
 
     public ListeRectangles() {
         listeR = new ArrayList<Rectangle>(MAX);
@@ -16,8 +17,7 @@ public class ListeRectangles {
     public void ajouter(Rectangle r) {
         if (listeR.size() < MAX) {
             listeR.add(r);
-        }
-        else {
+        } else {
             System.out.println("Erreur : liste pleine");
         }
     }
@@ -29,20 +29,23 @@ public class ListeRectangles {
     }
 
     public void trier() {
-    // Pourquoi faut-il utiliser un tableau alors qu'on a implémenté Comparable ??
         if (!listeR.isEmpty()) {
-            Collections.sort(listeR);
-        }
-        else {
+            tabR = new Rectangle[listeR.size()];
+            tabR = listeR.toArray(tabR);
+            Arrays.sort(tabR);
+            listeR = new ArrayList<Rectangle>(MAX);
+            for (Rectangle rectangle : tabR) {
+                this.ajouter(rectangle);
+            }
+        } else {
             System.out.println("Erreur : liste vide");
         }
     }
 
     public Rectangle obtenirIemeRectangle(int i) {
-        if(listeR.size() < i) {
+        if (listeR.size() < i) {
             return null;
-        }
-        else {
+        } else {
             return listeR.get(i);
         }
     }

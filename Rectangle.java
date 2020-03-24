@@ -13,15 +13,15 @@ public class Rectangle extends FormeGeometrique implements Dessinable, Comparabl
     }
 
     public double perimetre() {
-        return this.hauteur*2 + this.largeur*2;
+        return this.hauteur * 2 + this.largeur * 2;
     }
 
     public double surface() {
-        return this.hauteur*this.largeur;
+        return this.hauteur * this.largeur;
     }
 
     public void dessiner(String couleur) {
-        System.out.println("Rectangle, " + couleur);
+        System.out.println("Rectangle, " + this.toString() + " , " + couleur);
     }
 
     @Override
